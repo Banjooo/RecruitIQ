@@ -1,0 +1,6 @@
+{
+  "name": "RecruitIQ Portal",
+  "description": "A premium multi-tenant recruitment SaaS and career learning platform, featuring dedicated pathways with a royal blue and gold theme for job seekers and corporate talent acquirers.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
