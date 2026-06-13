@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
+const API_PORT = 8080;
 
 // Initialize GoogleGenAI client (server-side only)
 const ai = new GoogleGenAI({
