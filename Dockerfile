@@ -38,12 +38,13 @@ RUN addgroup -g 1001 -S nodejs && \
 
 USER nodejs
 
-# Expose port
-EXPOSE 3000
+# Expose port (Railway overrides this with the PORT env var at runtime)
+EXPOSE ${PORT:-3000}
 
-# Health check
+# Health check — use $PORT so it matches the port Railway assigns dynamically
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD node -e "require('http').get('http://localhost:3000/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+    CMD node -e "require('http').get('http://localhost:' + (process.env.PORT || 3000) + '/health', (r) => {if (r.statusCode !== 200) throw new Error(r.statusCode)})"
+
 
 # Use dumb-init to handle signals properly
 ENTRYPOINT ["dumb-init", "--"]
