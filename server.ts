@@ -766,8 +766,6 @@ app.post("/api/billing/bank-pay", (req, res) => {
 // RESEND REAL SMTP INTEGRATION & COMPLIANCE ENDPOINTS
 // ============================================================================
 
-import fetch from "node-fetch"; // Node 18+ has fetch natively, but we can import or use global fetch. Since tsx compiles nicely we can use global fetch.
-
 async function sendResendEmail({ recipientEmail, subject, text, html }: { recipientEmail: string; subject: string; text: string; html?: string }) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
