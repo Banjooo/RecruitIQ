@@ -399,6 +399,11 @@ app.post("/api/admin/update-business-status", (req, res) => {
   res.json({ status: "success", tenant: updated });
 });
 
+// Root Health check (for container orchestration & monitoring)
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok" });
+});
+
 // Standard Health check
 app.get("/api/health", (req, res) => {
   res.json({ status: "ok", app: "RecruitIQ Server", timestamp: new Date().toISOString() });
